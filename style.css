@@ -1,0 +1,128 @@
+:root {
+  --verde: #24322c;      /* fondo del logo */
+  --verde-2: #33463d;
+  --oro: #c6a14a;        /* scritta e arco del logo */
+  --oro-chiaro: #e6cf8f;
+  --giallo: #efc72a;     /* le pareti del negozio */
+  --bianco: #ffffff;
+  --carta: #f6f5f0;
+  --inchiostro: #151a17;
+  --grigio: #5a615d;
+  --logo: "Marcellus", Georgia, serif;
+  --f: "Public Sans", system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+body { margin: 0; background: var(--carta); color: var(--inchiostro); font: 400 1.0625rem/1.6 var(--f); padding-bottom: 60px; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--verde-2); }
+h1, h2, h3 { font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 .5em; text-wrap: balance; }
+h1 { font-size: clamp(2rem, 5.6vw, 3.4rem); }
+h2 { font-size: clamp(1.8rem, 4.6vw, 2.8rem); }
+h3 { font-size: 1.2rem; letter-spacing: -0.01em; }
+p { margin: 0 0 1em; max-width: 62ch; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid var(--giallo); outline-offset: 3px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--bianco); padding: 8px 12px; z-index: 99; }
+.skip:focus { left: 8px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 4px; background: var(--verde); color: var(--bianco); font-weight: 600; text-decoration: none; border: 2px solid var(--verde); transition: background .2s; }
+.btn:hover { background: var(--verde-2); }
+.btn-linea { background: transparent; color: var(--verde); }
+.btn-linea:hover { background: var(--verde); color: var(--bianco); }
+.azioni { display: flex; flex-wrap: wrap; gap: 12px; margin: 10px 0 16px; }
+
+.top { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 24px; padding: 12px 16px; background: var(--verde); }
+.logo { font-family: var(--logo); color: var(--oro-chiaro); text-decoration: none; font-size: 1.5rem; letter-spacing: .06em; text-transform: uppercase; margin-right: auto; line-height: 1; }
+.logo span:first-child::first-letter, .logo span:last-child::first-letter { font-size: 1.25em; }
+.menu { display: none; gap: 24px; }
+.menu a { color: var(--carta); text-decoration: none; font-weight: 600; }
+.menu a:hover { color: var(--oro-chiaro); }
+@media (min-width: 900px) { .menu { display: flex; } .top { padding: 14px 32px; } }
+
+section { padding: 56px 16px; }
+@media (min-width: 860px) { section { padding: 88px 32px; } }
+section > * { max-width: 1120px; margin-left: auto; margin-right: auto; }
+
+/* apertura: la tavola optometrica è l'elemento memorabile */
+.apertura { display: grid; gap: 36px; padding-top: 32px; max-width: 1184px; margin: 0 auto; }
+.apertura > * { margin: 0; max-width: none; }
+.tavola { background: var(--bianco); border: 1px solid #dedcd3; box-shadow: 0 1px 0 #dedcd3, 0 18px 40px rgba(21, 26, 23, .08); padding: 28px 20px 22px; text-align: center; font-family: var(--f); font-weight: 800; color: var(--inchiostro); overflow: hidden; }
+.r { position: relative; margin: 0 auto .5em; max-width: none; letter-spacing: .12em; line-height: 1; white-space: nowrap; }
+.r .n { position: absolute; left: 0; top: 50%; transform: translateY(-50%); font-size: 11px; font-weight: 600; color: var(--grigio); letter-spacing: 0; }
+.r1 { font-size: clamp(3rem, 15vw, 5.6rem); letter-spacing: .08em; }
+.r2 { font-size: clamp(2.3rem, 11vw, 4.2rem); color: var(--verde); }
+.r3 { font-size: clamp(1.25rem, 5.4vw, 2rem); }
+.r4 { font-size: clamp(.8rem, 3.5vw, 1.3rem); }
+.r5 { font-size: clamp(.68rem, 2.9vw, 1.05rem); }
+.r6 { font-size: clamp(.55rem, 2.3vw, .82rem); }
+.r7 { font-size: clamp(.45rem, 1.7vw, .6rem); margin-bottom: 0; color: #2c332f; }
+.r .n { left: -2px; }
+.r1, .r2, .r3 { padding: 0 18px; }
+.tavola::after { content: ""; display: block; height: 3px; width: 64px; margin: 18px auto 0; background: var(--oro); }
+.lead { font-size: 1.12rem; color: var(--grigio); }
+.voto { color: var(--grigio); }
+.voto strong { font-size: 1.5rem; color: var(--inchiostro); }
+@media (min-width: 900px) { .apertura { grid-template-columns: 1fr 1fr; align-items: center; gap: 64px; padding: 64px 32px 80px; } .tavola { padding: 40px 32px 30px; } }
+
+[data-stato].aperto, [data-stato].chiuso { font-weight: 700; color: var(--inchiostro); white-space: nowrap; }
+[data-stato].aperto::before, [data-stato].chiuso::before { content: ""; display: inline-block; width: .55em; height: .55em; border-radius: 50%; margin: 0 .4em 0 .2em; background: #2f8a4f; }
+[data-stato].chiuso::before { background: #c0392b; }
+
+.controllo { background: var(--giallo); display: grid; gap: 24px; }
+.controllo > * { margin: 0 auto; }
+.sedi-rapide { display: grid; gap: 12px; width: 100%; }
+.sede-tel { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 64px; padding: 14px 20px; background: var(--verde); color: var(--bianco); text-decoration: none; border-radius: 4px; }
+.sede-tel strong { font-size: 1.3rem; color: var(--oro-chiaro); font-variant-numeric: tabular-nums; }
+.sede-tel:hover { background: var(--verde-2); }
+@media (min-width: 860px) { .controllo { grid-template-columns: 1.2fr 1fr; align-items: center; padding: 72px max(32px, calc((100vw - 1120px) / 2)); } .controllo > * { margin: 0; } }
+
+.servizi-griglia { display: grid; gap: 1px; background: #dedcd3; border: 1px solid #dedcd3; margin-bottom: 22px; }
+.servizi-griglia article { background: var(--bianco); padding: 22px; }
+.servizi-griglia p { margin: 0; color: var(--grigio); }
+@media (min-width: 700px) { .servizi-griglia { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .servizi-griglia { grid-template-columns: repeat(3, 1fr); } }
+.convenzioni { font-size: 1.1rem; }
+
+.noi { background: var(--verde); color: var(--carta); display: grid; gap: 28px; }
+.noi > * { margin-left: auto; margin-right: auto; }
+.noi h2 { color: var(--oro-chiaro); }
+.noi-foto { margin: 0 auto; }
+.noi-foto img { border-radius: 4px; width: 100%; }
+.recensioni { display: grid; gap: 14px; }
+blockquote { margin: 0; padding: 20px 22px; border-top: 3px solid var(--oro); background: var(--verde-2); }
+blockquote p { font-size: 1.08rem; margin-bottom: .5em; }
+blockquote footer { font-size: .88rem; color: var(--oro-chiaro); }
+@media (min-width: 860px) {
+  .noi { grid-template-columns: 1.1fr .9fr; align-items: center; column-gap: 56px; padding: 88px max(32px, calc((100vw - 1120px) / 2)); }
+  .noi > * { margin: 0; max-width: none; }
+  .recensioni { grid-column: 1 / -1; grid-template-columns: repeat(4, 1fr); }
+}
+
+.insta { display: grid; gap: 24px; }
+.insta > * { margin: 0 auto; }
+.insta figure { margin: 0 auto; max-width: 360px; }
+.insta img { border-radius: 4px; }
+@media (min-width: 860px) { .insta { grid-template-columns: 360px 1fr; align-items: center; gap: 56px; max-width: 1184px; margin: 0 auto; } .insta > * { margin: 0; } }
+
+.sedi { background: var(--bianco); }
+.sedi-griglia { display: grid; gap: 18px; }
+.sede, .orari-box { border: 1px solid #dedcd3; padding: 20px; border-radius: 4px; }
+.sede iframe { width: 100%; height: 220px; border: 0; border-radius: 4px; }
+.orari { border-collapse: collapse; width: 100%; margin-bottom: 14px; }
+.orari td { padding: 6px 0; border-bottom: 1px solid #e6e4dc; vertical-align: top; }
+.orari td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+.orari tr.oggi td { font-weight: 800; }
+@media (min-width: 900px) { .sedi-griglia { grid-template-columns: 1fr 1fr 1fr; } }
+
+.piede { background: var(--verde); color: var(--carta); text-align: center; padding: 40px 16px 30px; }
+.piede p { margin: 0 auto 6px; }
+.piede .logo { display: block; font-size: 2rem; margin-bottom: 10px; }
+.piede .demo { font-size: .85rem; opacity: .8; margin-top: 14px; }
+
+.barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: grid; grid-template-columns: repeat(3, 1fr); background: var(--verde); }
+.barra a { display: grid; place-items: center; min-height: 56px; color: var(--bianco); text-decoration: none; font-weight: 600; }
+.barra a:nth-child(2) { background: var(--verde-2); }
+.barra a:nth-child(3) { background: var(--giallo); color: var(--inchiostro); }
+@media (min-width: 860px) { .barra { display: none; } body { padding-bottom: 0; } }
